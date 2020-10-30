@@ -45,7 +45,7 @@ class Demo_actionAction
 protected:
   ros::NodeHandle nh_;
   // NodeHandle instance must be created before this line. Otherwise strange error may occur.
-  actionlib::SimpleActionServer<mastering_ros_demo_pkg::Demo_actionAction> as; 
+  actionlib::SimpleActionServer<mastering_ros_demo_pkg::Demo_actionAction> as;
   // create messages that are used to published feedback/result
   mastering_ros_demo_pkg::Demo_actionFeedback feedback;
   mastering_ros_demo_pkg::Demo_actionResult result;
@@ -70,7 +70,7 @@ public:
   void preemptCB(){
 	ROS_WARN("%s got preempted!", action_name.c_str());
 	result.final_count = progress;
-	as.setPreempted(result,"I got Preempted"); 
+	as.setPreempted(result,"I got Preempted");
 
   }
   void executeCB(const mastering_ros_demo_pkg::Demo_actionGoalConstPtr &goal)
@@ -87,10 +87,10 @@ public:
 			break;
 
 		}
-	
+
 		if(!as.isActive() || as.isPreemptRequested()){
 			return;
-		}	
+		}
 
 		if(goal->count == progress){
 			ROS_INFO("%s Succeeded at getting to goal %d", action_name.c_str(), goal->count);
@@ -102,7 +102,7 @@ public:
 			as.publishFeedback(feedback);
 		}
 		rate.sleep();
-	}	
+	}
   }
 };
 

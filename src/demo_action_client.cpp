@@ -62,7 +62,7 @@ int main (int argc, char **argv)
   // send a goal to the action
   mastering_ros_demo_pkg::Demo_actionGoal goal;
   goal.count = atoi(argv[1]);
- 
+
   ROS_INFO("Sending Goal [%d] and Preempt time of [%d]",goal.count, atoi(argv[2]));
   ac.sendGoal(goal);
 
